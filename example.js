@@ -47,12 +47,11 @@ $(document).ready(function() {
     $imgRating.text(imageLibraryEntryClicked[0].rating);
   };
 
-  var onRatingSelectSubmit = function () {
+  var onRatingSelectChange = function () {
     var sampleDataIndex;
     var newRating = $ratingSelect.val();
     
     $imgRating.text(newRating);
-
     sampleImageData.forEach(function(item, index) {
       if (item.title === $imgTitle.text()) {
         sampleDataIndex = index;
@@ -60,12 +59,12 @@ $(document).ready(function() {
     });
     
     sampleImageData[sampleDataIndex].rating = newRating;
-    console.log(sampleImageData);   
+    $ratingSelect.val('Rating');
   };
 
 
   $imageLibrary.on('click', 'tr', onImageLibraryEntryClick);
-  $ratingSelect.on('change', onRatingSelectSubmit);
+  $ratingSelect.on('change', onRatingSelectChange);
 
 
 
